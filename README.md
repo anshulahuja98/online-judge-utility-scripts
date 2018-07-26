@@ -1,0 +1,1 @@
+# codeforces-example-auto-test
