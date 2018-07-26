@@ -1,3 +1,5 @@
 *.txt
 *.cpp
 *.out
+.DS_Store
+*.exe
