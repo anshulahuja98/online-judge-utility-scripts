@@ -11,7 +11,7 @@ q_block = soup.find("div",class_='sample-test')
 input_blocks = soup.find_all("div",class_='input')
 output_blocks = soup.find_all("div",class_='output')
 
-os.system("g++ A.cpp -o dummy_prog.exe")
+os.system("g++ A.cpp -o run.exe")
 
 for i,j in zip(input_blocks,output_blocks):
 	inputs = str(i.find("pre"))
@@ -26,7 +26,7 @@ for i,j in zip(input_blocks,output_blocks):
 	# print(outputs)
 	outputs = outputs.replace('\n','')
 
-	os.system("./dummy_prog.exe < inputs.txt >outputs.txt")
+	os.system("./run.exe < inputs.txt >outputs.txt")
 
 	with open('outputs.txt','r') as ff:
 		data = ff.read()
@@ -37,5 +37,7 @@ for i,j in zip(input_blocks,output_blocks):
 			print(data)
 			print(outputs)
 
-
+print("\n Test with your own data\n ")
+os.system('./run.exe')
+os.system('rm run.exe inputs.txt outputs.txt')
 
