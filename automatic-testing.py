@@ -1,9 +1,7 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import os
-import html2text
-import re
-from time import sleep
+
 quote_page = "http://codeforces.com/contest/1011/problem/A"
 page = urlopen(quote_page)
 soup = BeautifulSoup(page,'html.parser')
