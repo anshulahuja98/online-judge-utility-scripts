@@ -1,15 +1,17 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import os
+import sys
+with open(sys.argv[1]) as code:
+	quote_page = code.readline()[2:]
 
-quote_page = "http://codeforces.com/contest/1011/problem/A"
 page = urlopen(quote_page)
 soup = BeautifulSoup(page,'html.parser')
 q_block = soup.find("div",class_='sample-test')
 input_blocks = soup.find_all("div",class_='input')
 output_blocks = soup.find_all("div",class_='output')
 
-os.system("g++ A.cpp -o run.exe")
+os.system("g++ {} -o run.exe".format(sys.argv[1]))
 
 for i,j in zip(input_blocks,output_blocks):
 	inputs = str(i.find("pre"))
@@ -31,9 +33,13 @@ for i,j in zip(input_blocks,output_blocks):
 		if(data.replace('\n','')==outputs.replace('\n','')):
 			print("Correct")
 		else:
-			print("Incorrect")
-			print(data)
+			print("## Incorrect ##")
+			print("The input was ")
+			print(inputs)
+			print("Expected Output was")
 			print(outputs)
+			print("Your Output was")
+			print(data)
 
 print("\n Test with your own data\n ")
 os.system('./run.exe')
