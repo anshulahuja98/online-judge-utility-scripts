@@ -2,8 +2,12 @@
 
 After writing code for problems on codeforces.com, we generally test it out on the examples available on the problem page, this script automates that task.
 
-How to use:
+Setting up:
+Install the requirements
 
+``` pip3 install -r requirements.txt```
+
+How to use:
 * First write your code 
 * At the top of your your code file, add a single line comment with the link to the problem that you are solving.
 
