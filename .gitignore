@@ -3,3 +3,4 @@
 *.out
 .DS_Store
 *.exe
+!requirements.txt
