@@ -5,8 +5,13 @@ import sys
 with open(sys.argv[1]) as code:
 	quote_page = code.readline()[2:]
 
-page = urlopen(quote_page)
+page = urlopen("http://codeforces.com/contest/" + sys.argv[1][:-5] + "/problem/" + sys.argv[1][-5:-4])
 soup = BeautifulSoup(page,'html.parser')
+# To check if page is 404 or not. If 404 rely on the comment otherwise the name of the file.
+if len(soup.body.findAll(text='The requested URL was not found on this server.')) != 0:
+    page = urlopen(quote_page)
+    soup = BeautifulSoup(page,'html.parser')
+
 q_block = soup.find("div",class_='sample-test')
 input_blocks = soup.find_all("div",class_='input')
 output_blocks = soup.find_all("div",class_='output')
